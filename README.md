@@ -1,7 +1,5 @@
 # Solitaire
-Code demo for solitaire game
-
-Consists of three classes:
+Code demo for solitaire game, consisting of of three Java classes:
 
     GameActivity containing & displaying an instance of BoardView
     
