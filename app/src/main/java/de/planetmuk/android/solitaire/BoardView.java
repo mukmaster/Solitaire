@@ -38,12 +38,20 @@ public class BoardView extends View {
 		Paint textPaint = new Paint();
 		textPaint.setColor(getResources().getColor(R.color.titletext_color));
 		textPaint.setAntiAlias(true);
+		// Normale Schriftgröße: 3% der Displayhöhe
+		final float TEXTSIZE = getHeight()*0.03f;
+		// Kopfzeile: Doppelt hohe Schrift
+		textPaint.setTextSize(TEXTSIZE*2f);
+		textPaint.setTextAlign(Align.CENTER);
+		canvas.drawText("SOLITAIRE", getWidth()/2, 4f*TEXTSIZE, textPaint);
+		// Fusszeile: Normale Schrift
+		textPaint.setTextSize(TEXTSIZE);
 		textPaint.setTextAlign(Align.LEFT);
-		textPaint.setTextSize(12f);
 		canvas.drawText(getResources().getString(R.string.nr_of_moves) + " "
-				+ GameData.moves, 10.0f, hView - 36.0f, textPaint);
+				+ GameData.moves, TEXTSIZE, hView - TEXTSIZE, textPaint);
+		textPaint.setTextAlign(Align.RIGHT);
 		canvas.drawText(getResources().getString(R.string.possible_moves) + " "
-				+ GameData.possibleMoves, 10.0f, hView - 12.0f, textPaint);
+				+ GameData.possibleMoves, getWidth()-TEXTSIZE, hView - TEXTSIZE, textPaint);
 
 		// draw board from tiles
 		Paint tileFgrdPaint = new Paint();
